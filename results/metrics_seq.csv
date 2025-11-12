@@ -1,0 +1,7 @@
+Model,Activation,Optimizer,Seq Length,Grad Clipping,Accuracy,F1,Epoch Time(s)
+LSTM,tanh,Adam,25,No,0.7137,0.7130,90.9
+LSTM,tanh,Adam,25,Yes,0.7121,0.7121,95.8
+LSTM,tanh,Adam,50,No,0.7660,0.7660,134.0
+LSTM,tanh,Adam,50,Yes,0.7659,0.7659,169.6
+LSTM,tanh,Adam,100,No,0.8295,0.8295,245.4
+LSTM,tanh,Adam,100,Yes,0.8195,0.8191,305.6

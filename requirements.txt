@@ -1,0 +1,13 @@
+tensorflow>=2.12
+torch>=2.0
+torchvision
+torchaudio
+numpy>=1.25
+pandas>=2.2
+scikit-learn>=1.5
+matplotlib>=3.9
+seaborn>=0.13
+nltk>=3.9
+tqdm
+jupyter
+notebook
