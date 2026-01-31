@@ -1,19 +1,20 @@
-# Sentiment Classification with RNN, LSTM, and BiLSTM  
+# Sentiment Classification Tradeoffs with RNN, LSTM, and BiLSTM 
 Author: *Dharmitha Niteesha Vattikonda*  
 
 ---
 
 ##  Overview
-This project explores **recurrent neural network architectures** (RNN, LSTM, and Bidirectional LSTM) for **sentiment classification** on the IMDB movie reviews dataset.  
-It evaluates multiple configurations across:
+This project investigates how different recurrent neural network architectures perform on a real-world sentiment classification task using the IMDB movie reviews dataset. The goal is not only to compare RNN, LSTM, and Bidirectional LSTM models, but to understand how architectural choices, sequence length, optimization strategy, and gradient stability affect performance, training time, and reliability.
 
-- **Architecture:** RNN, LSTM, BiLSTM  
-- **Activation functions:** `tanh`, `relu`, `sigmoid`  
-- **Optimizers:** `Adam`, `RMSProp`, `SGD`  
-- **Sequence lengths:** 25, 50, 100  
-- **Stability strategy:** With and without gradient clipping  
+Through a controlled experimental setup, the project evaluates tradeoffs between model complexity, convergence behavior, and predictive quality, with an emphasis on selecting configurations that balance accuracy, stability, and computational cost.
 
-The goal is to compare how these choices affect accuracy, F1-score, training time, and overall stability.
+---
+
+## Problem Statement
+
+Sentiment classification on long-form text presents challenges related to sequence modeling, gradient stability, and computational efficiency. While simple RNNs struggle with long-range dependencies, more complex architectures such as LSTMs and Bidirectional LSTMs introduce additional training cost and complexity.
+
+Choosing an appropriate architecture and training configuration requires understanding the tradeoffs between accuracy, stability, and runtime. This project addresses that problem by systematically evaluating recurrent model variants under different training conditions to identify practical, high-performing configurations.
 
 ---
 
@@ -152,13 +153,21 @@ This produces text summaries (e.g. `summary_metrics.txt`) showing top configurat
 
 ---
 
-##  Key Findings (Summary)
+##  Insights & Tradeoffs
 
-* **Best model:** LSTM (tanh, Adam, sequence length = 100)
-* **Best F1-score:** ≈ 0.83
-* **BiLSTM** adds training time but limited accuracy gain.
-* **Adam and RMSProp** outperform SGD for stability and convergence.
-* **Gradient clipping** slightly improves consistency but not accuracy.
+* LSTM with tanh activation and Adam optimizer provides the best balance of accuracy and training stability.
+* Bidirectional LSTMs increase training time significantly while offering marginal accuracy improvements on this dataset.
+* Adam and RMSProp converge faster and more reliably than SGD, especially for longer sequences.
+* Gradient clipping improves training stability but does not materially improve final accuracy.
+
+---
+
+## Production Considerations
+
+Based on these results, a standard LSTM with moderate sequence length would be preferred in a production setting due to its balance of performance and computational cost. More complex architectures such as BiLSTMs may be justified only when marginal accuracy gains outweigh increased latency and resource usage.
+
+Further improvements could include pretrained embeddings, transformer-based architectures, or model distillation for deployment efficiency.
+
 
 
  
